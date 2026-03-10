@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { AppProvider, useAppContext } from './context/AppContext';
 import { Navbar } from './components/layout/Navbar';
@@ -8,6 +7,7 @@ import { Modules } from './components/sections/Modules';
 import { Footer } from './components/layout/Footer';
 import { ScrollToTop } from './components/ui/ScrollToTop';
 import { motion, AnimatePresence } from 'framer-motion';
+import { IonPage } from './components/IonPage';
 
 const Preloader = ({ onFinish }: { onFinish: () => void }) => {
   useEffect(() => {
@@ -22,7 +22,9 @@ const Preloader = ({ onFinish }: { onFinish: () => void }) => {
     >
       <div className="relative w-32 h-32 flex items-center justify-center">
         <div className="absolute inset-0 rounded-full border-t-2 border-brand-cyan animate-spin"></div>
-        <div className="font-orbitron font-bold text-white text-xs animate-pulse">INITIATING...</div>
+        <div className="font-orbitron font-bold text-white text-xs animate-pulse">
+          INITIATING...
+        </div>
       </div>
     </motion.div>
   );
@@ -34,12 +36,10 @@ const MainLayout: React.FC = () => {
   return (
     <div className="relative min-h-screen overflow-x-hidden">
       <BackgroundCanvas />
-      
-      {/* Navbar hanya muncul jika sudah masuk ke modul, atau tampilkan dock kecil */}
       <Navbar />
 
       <AnimatePresence mode="wait">
-        {activeTab === 'home' ? (
+        {activeTab === 'home' && (
           <motion.div
             key="landing"
             initial={{ opacity: 0 }}
@@ -49,7 +49,9 @@ const MainLayout: React.FC = () => {
           >
             <Hero />
           </motion.div>
-        ) : (
+        )}
+
+        {activeTab === 'modules' && (
           <motion.div
             key="dashboard"
             initial={{ opacity: 0 }}
@@ -58,6 +60,18 @@ const MainLayout: React.FC = () => {
             className="relative z-10"
           >
             <Modules />
+          </motion.div>
+        )}
+
+        {activeTab === 'ikatan-ion' && (
+          <motion.div
+            key="ikatan-ion"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="relative z-10"
+          >
+            <IonPage />
           </motion.div>
         )}
       </AnimatePresence>
