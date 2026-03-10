@@ -19,7 +19,7 @@ export const Modules: React.FC = () => {
       color: 'text-violet-300',
       description:
         'Mempelajari pemakaian bersama pasangan elektron antar atom untuk membentuk senyawa kovalen.',
-      action: () => alert('Halaman Ikatan Kovalen belum dibuat'),
+      action: () => setActiveTab('ikatan-kovalen'),
     },
     {
       title: 'Kepolaran',
@@ -27,7 +27,7 @@ export const Modules: React.FC = () => {
       color: 'text-pink-300',
       description:
         'Menentukan molekul polar dan nonpolar berdasarkan perbedaan keelektronegatifan dan distribusi muatan.',
-      action: () => alert('Halaman Kepolaran belum dibuat'),
+      action: () => setActiveTab('kepolaran'),
     },
     {
       title: 'Ikatan Logam',
@@ -35,7 +35,7 @@ export const Modules: React.FC = () => {
       color: 'text-orange-300',
       description:
         'Menganalisis model lautan elektron pada logam dan kaitannya dengan sifat konduktivitas serta kelenturan.',
-      action: () => alert('Halaman Ikatan Logam belum dibuat'),
+      action: () => setActiveTab('ikatan-logam'),
     },
     {
       title: 'Bentuk Molekul',
@@ -43,7 +43,7 @@ export const Modules: React.FC = () => {
       color: 'text-green-300',
       description:
         'Mempelajari bentuk geometri molekul menggunakan teori VSEPR seperti linear, trigonal, tetrahedral, dan lainnya.',
-      action: () => alert('Halaman Bentuk Molekul belum dibuat'),
+      action: () => setActiveTab('bentuk-molekul'),
     },
     {
       title: 'Gaya Molekul',
@@ -51,7 +51,7 @@ export const Modules: React.FC = () => {
       color: 'text-cyan-300',
       description:
         'Mengidentifikasi gaya antarmolekul seperti gaya London, dipol-dipol, dan ikatan hidrogen serta pengaruhnya pada sifat zat.',
-      action: () => alert('Halaman Gaya Molekul belum dibuat'),
+      action: () => setActiveTab('gaya-molekul'),
     },
   ];
 
