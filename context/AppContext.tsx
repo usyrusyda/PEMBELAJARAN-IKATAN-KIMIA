@@ -1,6 +1,14 @@
 import React, { createContext, useContext, useState } from 'react';
 
-export type TabType = 'home' | 'modules' | 'ikatan-ion';
+export type TabType =
+  | 'home'
+  | 'modules'
+  | 'ikatan-ion'
+  | 'ikatan-kovalen'
+  | 'kepolaran'
+  | 'ikatan-logam'
+  | 'bentuk-molekul'
+  | 'gaya-molekul';
 
 type AppContextType = {
   activeTab: TabType;
