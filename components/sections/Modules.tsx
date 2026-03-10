@@ -1,106 +1,106 @@
-
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Atom, Gamepad2, FlaskConical, FileText, MessageSquare, Award } from 'lucide-react';
-import { GlassCard } from '../ui/GlassCard';
-import { Modal } from '../ui/Modal';
-import { MateriContent } from '../content/MateriContent';
-import { GameContent } from '../content/GameContent';
-import { LabContent } from '../content/LabContent';
-import { LKPDContent } from '../content/LKPDContent';
-import { ForumContent } from '../content/ForumContent';
-import { BadgeContent } from '../content/BadgeContent';
+import React from 'react';
 import { useAppContext } from '../../context/AppContext';
 
-const SectionHeader: React.FC<{ title: string; subtitle: string; icon: React.ReactNode; colorClass?: string }> = ({ title, subtitle, icon, colorClass = "text-brand-cyan" }) => (
-  <motion.div 
-    initial={{ opacity: 0, x: -20 }}
-    animate={{ opacity: 1, x: 0 }}
-    className={`mb-12 flex items-center gap-4 border-l-4 border-current pl-6 ${colorClass}`}
-  >
-    <div className="p-3 rounded-xl bg-current opacity-20 text-inherit">
-      {icon}
-    </div>
-    <div className="text-slate-800 dark:text-white">
-      <h2 className="text-3xl font-orbitron font-black uppercase tracking-tighter">{title}</h2>
-      <p className="text-slate-500 dark:text-slate-400 mt-1 font-medium">{subtitle}</p>
-    </div>
-  </motion.div>
-);
-
 export const Modules: React.FC = () => {
-  const { activeTab } = useAppContext();
-  const [showLKPD, setShowLKPD] = useState(false);
+  const { setActiveTab } = useAppContext();
 
-  const renderModule = () => {
-    switch(activeTab) {
-      case 'materi':
-        return (
-          <div className="space-y-6">
-            <SectionHeader title="Modul Materi" subtitle="Eksplorasi konsep dasar ikatan kimia secara mendalam." icon={<Atom size={32}/>} />
-            <MateriContent />
-          </div>
-        );
-      case 'game':
-        return <GameContent />;
-      case 'lab':
-        return (
-          <div className="space-y-6">
-            <SectionHeader title="Virtual Lab" subtitle="Simulasi laboratorium 3D interaktif dari PhET." icon={<FlaskConical size={32}/>} />
-            <LabContent />
-          </div>
-        );
-      case 'case':
-        return (
-          <div className="space-y-12">
-            <SectionHeader title="Studi Kasus" subtitle="Analisis fenomena nyata dengan kimia." icon={<FileText size={32}/>} />
-            <GlassCard className="flex flex-col md:flex-row gap-8 items-center p-10 border-brand-cyan/20">
-              <div className="w-full md:w-1/3 aspect-square bg-yellow-500/10 rounded-2xl flex items-center justify-center border border-yellow-500/30">
-                <Atom size={80} className="text-yellow-400 animate-pulse" />
-              </div>
-              <div className="flex-1">
-                <h3 className="text-3xl font-black mb-4 text-brand-cyan font-orbitron uppercase">Investigasi Emas & Logam</h3>
-                <p className="text-lg opacity-80 mb-6 leading-relaxed">Mengapa emas berkilau? Bagaimana cara membedakan emas asli dan palsu menggunakan konsep ikatan kimia? Kerjakan LKPD untuk menemukan jawabannya.</p>
-                <button 
-                  onClick={() => setShowLKPD(true)} 
-                  className="px-8 py-3 bg-brand-cyan text-brand-dark font-black rounded-full shadow-[0_0_20px_rgba(0,255,255,0.3)] hover:scale-105 transition-transform"
-                >
-                  BUKA LKPD INVESTIGASI
-                </button>
-              </div>
-            </GlassCard>
-            <Modal isOpen={showLKPD} onClose={() => setShowLKPD(false)} title="LKPD: Investigasi Logam">
-              <LKPDContent />
-            </Modal>
-          </div>
-        );
-      case 'forum':
-        return <ForumContent />;
-      case 'badge':
-        return (
-          <div className="space-y-6">
-            <SectionHeader title="Achievements" subtitle="Pantau progres petualanganmu." icon={<Award size={32}/>} />
-            <BadgeContent />
-          </div>
-        );
-      default:
-        return null;
-    }
-  };
+  const cards = [
+    {
+      title: 'Ikatan Ion',
+      icon: '⚡',
+      color: 'text-yellow-300',
+      description:
+        'Memahami perpindahan elektron antara atom logam dan nonlogam serta pembentukan kation dan anion.',
+      action: () => setActiveTab('ikatan-ion'),
+    },
+    {
+      title: 'Ikatan Kovalen',
+      icon: '🔗',
+      color: 'text-violet-300',
+      description:
+        'Mempelajari pemakaian bersama pasangan elektron antar atom untuk membentuk senyawa kovalen.',
+      action: () => alert('Halaman Ikatan Kovalen belum dibuat'),
+    },
+    {
+      title: 'Kepolaran',
+      icon: '△',
+      color: 'text-pink-300',
+      description:
+        'Menentukan molekul polar dan nonpolar berdasarkan perbedaan keelektronegatifan dan distribusi muatan.',
+      action: () => alert('Halaman Kepolaran belum dibuat'),
+    },
+    {
+      title: 'Ikatan Logam',
+      icon: '⛓',
+      color: 'text-orange-300',
+      description:
+        'Menganalisis model lautan elektron pada logam dan kaitannya dengan sifat konduktivitas serta kelenturan.',
+      action: () => alert('Halaman Ikatan Logam belum dibuat'),
+    },
+    {
+      title: 'Bentuk Molekul',
+      icon: '🔺',
+      color: 'text-green-300',
+      description:
+        'Mempelajari bentuk geometri molekul menggunakan teori VSEPR seperti linear, trigonal, tetrahedral, dan lainnya.',
+      action: () => alert('Halaman Bentuk Molekul belum dibuat'),
+    },
+    {
+      title: 'Gaya Molekul',
+      icon: '✦',
+      color: 'text-cyan-300',
+      description:
+        'Mengidentifikasi gaya antarmolekul seperti gaya London, dipol-dipol, dan ikatan hidrogen serta pengaruhnya pada sifat zat.',
+      action: () => alert('Halaman Gaya Molekul belum dibuat'),
+    },
+  ];
 
   return (
-    <main className="max-w-6xl mx-auto px-4 py-24 min-h-screen">
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={activeTab}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
-        >
-          {renderModule()}
-        </motion.div>
-      </AnimatePresence>
-    </main>
+    <section className="relative z-10 min-h-screen px-6 md:px-12 lg:px-20 py-24">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex items-start gap-4 mb-10">
+          <div className="w-1 h-14 rounded-full bg-cyan-400 shadow-[0_0_20px_rgba(34,211,238,0.7)]"></div>
+
+          <div className="flex items-center gap-4">
+            <div className="w-14 h-14 rounded-2xl border border-cyan-400/20 bg-cyan-400/10 flex items-center justify-center text-2xl shadow-[0_0_20px_rgba(34,211,238,0.15)]">
+              📘
+            </div>
+
+            <div>
+              <h2 className="font-orbitron text-white text-3xl md:text-5xl font-bold uppercase tracking-wide">
+                Modul Materi
+              </h2>
+              <p className="text-slate-300 mt-2 text-sm md:text-lg">
+                Eksplorasi konsep ikatan kimia secara mendalam.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+          {cards.map((card) => (
+            <article
+              key={card.title}
+              className="rounded-[28px] border border-cyan-400/15 bg-[rgba(5,10,45,0.78)] backdrop-blur-md p-6 min-h-[270px] shadow-[0_10px_30px_rgba(0,0,0,0.25)] transition duration-300 hover:-translate-y-1 hover:border-cyan-400/25"
+            >
+              <div className={`text-3xl mb-6 ${card.color}`}>{card.icon}</div>
+
+              <h3 className="text-white text-2xl font-bold mb-4">{card.title}</h3>
+
+              <p className="text-slate-300 leading-8 text-base mb-8">
+                {card.description}
+              </p>
+
+              <button
+                onClick={card.action}
+                className="px-5 py-3 rounded-xl bg-cyan-400 text-slate-900 font-extrabold uppercase text-sm shadow-[0_0_20px_rgba(34,211,238,0.4)] hover:scale-105 transition"
+              >
+                Pelajari
+              </button>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 };
