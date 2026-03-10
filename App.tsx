@@ -7,7 +7,13 @@ import { Modules } from './components/sections/Modules';
 import { Footer } from './components/layout/Footer';
 import { ScrollToTop } from './components/ui/ScrollToTop';
 import { motion, AnimatePresence } from 'framer-motion';
+
 import { IonPage } from './components/IonPage';
+import { KovalenPage } from './components/KovalenPage';
+import { KepolaranPage } from './components/KepolaranPage';
+import { IkatanLogamPage } from './components/IkatanLogamPage';
+import { BentukMolekulPage } from './components/BentukMolekulPage';
+import { GayaMolekulPage } from './components/GayaMolekulPage';
 
 const Preloader = ({ onFinish }: { onFinish: () => void }) => {
   useEffect(() => {
@@ -41,7 +47,7 @@ const MainLayout: React.FC = () => {
       <AnimatePresence mode="wait">
         {activeTab === 'home' && (
           <motion.div
-            key="landing"
+            key="home"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -53,7 +59,7 @@ const MainLayout: React.FC = () => {
 
         {activeTab === 'modules' && (
           <motion.div
-            key="dashboard"
+            key="modules"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -72,6 +78,66 @@ const MainLayout: React.FC = () => {
             className="relative z-10"
           >
             <IonPage />
+          </motion.div>
+        )}
+
+        {activeTab === 'ikatan-kovalen' && (
+          <motion.div
+            key="ikatan-kovalen"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="relative z-10"
+          >
+            <KovalenPage />
+          </motion.div>
+        )}
+
+        {activeTab === 'kepolaran' && (
+          <motion.div
+            key="kepolaran"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="relative z-10"
+          >
+            <KepolaranPage />
+          </motion.div>
+        )}
+
+        {activeTab === 'ikatan-logam' && (
+          <motion.div
+            key="ikatan-logam"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="relative z-10"
+          >
+            <IkatanLogamPage />
+          </motion.div>
+        )}
+
+        {activeTab === 'bentuk-molekul' && (
+          <motion.div
+            key="bentuk-molekul"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="relative z-10"
+          >
+            <BentukMolekulPage />
+          </motion.div>
+        )}
+
+        {activeTab === 'gaya-molekul' && (
+          <motion.div
+            key="gaya-molekul"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="relative z-10"
+          >
+            <GayaMolekulPage />
           </motion.div>
         )}
       </AnimatePresence>
